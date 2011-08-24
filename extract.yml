@@ -111,6 +111,10 @@ tests:
       text: "text http://www.boingboing.net/2007/02/14/katamari_damacy_phon.html"
       expected: ["http://www.boingboing.net/2007/02/14/katamari_damacy_phon.html"]
 
+    - description: "Extract valid URL: http://www.boingboing.net/2007/02/14/katamari_damacy_phon.html"
+      text: "that's how the light gets in: http://www.flickr.com/photos/60936079@N05/5714919287/in/pool-best100only beautiful!"
+      expected: ["http://www.flickr.com/photos/60936079@N05/5714919287/in/pool-best100only"]
+
     - description: "Extract valid URL: http://somehost.com:3000"
       text: "text http://somehost.com:3000"
       expected: ["http://somehost.com:3000"]
@@ -138,7 +142,7 @@ tests:
     - description: "Extract valid URL: http://✪df.ws/ejp"
       text: "text http://✪df.ws/ejp"
       expected: ["http://✪df.ws/ejp"]
-      
+
     - description: "Extract valid URL: http://chilp.it/?77e8fd"
       text: "text http://chilp.it/?77e8fd"
       expected: ["http://chilp.it/?77e8fd"]
