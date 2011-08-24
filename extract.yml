@@ -217,6 +217,10 @@ tests:
       text: "text http://x.com/oneletterdomain"
       expected: ["http://x.com/oneletterdomain"]
 
+    - description: "Extract valid URL containing @ symbol: http://x.com/oneletterdomain"
+      text: "robocop on a unicorn: http://www.flickr.com/photos/87258185@N00/2493079197/in/set-72157603724213121 would I lie to you?"
+      expected: ["http://www.flickr.com/photos/87258185@N00/2493079197/in/set-72157603724213121"]
+
     - description: "DO NOT extract invalid URL: http://domain-begin_dash_2314352345_dfasd.foo-cow_4352.com"
       text: "text http://domain-dash_2314352345_dfasd.foo-cow_4352.com"
       expected: []
