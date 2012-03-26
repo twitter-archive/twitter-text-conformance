@@ -469,6 +469,10 @@ tests:
       text: "$http://twitter.com $twitter.com $http://t.co/abcde $t.co/abcde $t.co $TVI.CA $RBS.CA"
       expected: []
 
+    - description: "extract URLS with a dot preceding the question mark of the query params"
+      text: "http://t.co/a.?q=x"
+      expected: ["http://t.co/a.?q=x"]
+
   urls_with_indices:
     - description: "Extract a URL"
       text: "text http://google.com"
