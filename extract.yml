@@ -424,6 +424,14 @@ tests:
       text: "test ELPAÍS.com"
       expected: ["ELPAÍS.com"]
 
+    - description: "Extract a valid Punycode URL http://XN--R8JZ45G.XN--ZCKZAH"
+      text: "http://XN--R8JZ45G.XN--ZCKZAH"
+      expected: ["http://xn--R8JZ45G.XN--ZCKZAH"]
+
+    - description: "Extract a valid Punycode URL xn--eckwd4c7cu47r2wf.com"
+      text: "http://xn--eckwd4c7cu47r2wf.com"
+      expected: ["http://xn--eckwd4c7cu47r2wf.com"]
+
     - description: "DO NOT include period at the end of URL"
       text: "test http://twitter.com/."
       expected: ["http://twitter.com/"]
