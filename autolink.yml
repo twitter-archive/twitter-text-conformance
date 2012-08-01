@@ -681,6 +681,10 @@ tests:
       text: "Text $STOCK text $symbol text"
       expected: "Text <a href=\"https://twitter.com/#!/search?q=%24STOCK\" title=\"$STOCK\" class=\"tweet-url cashtag\">$STOCK</a> text <a href=\"https://twitter.com/#!/search?q=%24symbol\" title=\"$symbol\" class=\"tweet-url cashtag\">$symbol</a> text"
 
+    - description: "Autolink only a cashtag in text"
+      text: "Text STOCK $STOCK text symbol $symbol text"
+      expected: "Text STOCK <a href=\"https://twitter.com/#!/search?q=%24STOCK\" title=\"$STOCK\" class=\"tweet-url cashtag\">$STOCK</a> text symbol <a href=\"https://twitter.com/#!/search?q=%24symbol\" title=\"$symbol\" class=\"tweet-url cashtag\">$symbol</a> text"
+
   all:
     - description: "Autolink all does not break on URL with @"
       text: "http://www.flickr.com/photos/29674651@N00/4382024406 if you know what's good for you."

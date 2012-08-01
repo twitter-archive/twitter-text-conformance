@@ -847,3 +847,11 @@ tests:
           indices: [9, 16]
         - cashtag: "symbol_ab"
           indices: [22, 32]
+
+    - description: "Do not extract non-cashtags"
+      text: "appl $appl goog $goog"
+      expected:
+        - cashtag: "appl"
+          indices: [5, 10]
+        - cashtag: "goog"
+          indices: [16, 21]
