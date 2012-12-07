@@ -95,7 +95,7 @@ tests:
 
     - description: "Autolink list name over 25 characters (truncated to 25)"
       text: "@username/list567890123456789012345A"
-      expected: "@<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list567890123456789012345\">username/list567890123456789012345</a>A"
+      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>/list567890123456789012345A"
 
     - description: "Autolink list that contains an _"
       text: "text @username/list_name"
