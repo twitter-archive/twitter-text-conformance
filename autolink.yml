@@ -2,11 +2,11 @@ tests:
   usernames:
     - description: "Autolink trailing username"
       text: "text @username"
-      expected: "text @<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>"
+      expected: "text <a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>"
 
     - description: "Autolink username at the beginning"
       text: "@username text"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a> text"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a> text"
 
     - description: "DO NOT Autolink username preceded by a letter"
       text: "meet@the beach"
@@ -14,27 +14,27 @@ tests:
 
     - description: "Autolink username preceded by puctuation"
       text: "great.@username"
-      expected: "great.@<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>"
+      expected: "great.<a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>"
 
     - description: "Autolink username followed by puctuation"
       text: "@username&^$%^"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>&^$%^"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>&^$%^"
 
     - description: "Autolink username followed by Japanese"
       text: "@usernameの"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>の"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>の"
 
     - description: "Autolink username preceded by Japanese"
       text: "あ@username"
-      expected: "あ@<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>"
+      expected: "あ<a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>"
 
     - description: "Autolink username surrounded by Japanese"
       text: "あ@usernameの"
-      expected: "あ@<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>の"
+      expected: "あ<a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>の"
 
     - description: "Autolink username in compressed RT"
       text: "RT@username: long Tweet is loooong"
-      expected: "RT@<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>: long Tweet is loooong"
+      expected: "RT<a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>: long Tweet is loooong"
 
     - description: "DO NOT Autolink username followed by accented latin characters"
       text: "@aliceìnheiro something something"
@@ -46,36 +46,36 @@ tests:
 
     - description: "Autolink username with full-width at sign (U+FF20)"
       text: "＠username"
-      expected: "＠<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/username\">＠username</a>"
 
     - description: "DO NOT Autolink username over 20 characters"
       text: "@username9012345678901"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/username901234567890\">username901234567890</a>1"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/username901234567890\">@username901234567890</a>1"
 
     - description: "Autolink two usernames"
       text: "@foo @bar"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/foo\">foo</a> @<a class=\"tweet-url username\" href=\"https://twitter.com/bar\">bar</a>"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/foo\">@foo</a> <a class=\"tweet-url username\" href=\"https://twitter.com/bar\">@bar</a>"
 
     - description: "Autolink usernames followed by :"
       text: "@foo: @bar"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/foo\">foo</a>: @<a class=\"tweet-url username\" href=\"https://twitter.com/bar\">bar</a>"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/foo\">@foo</a>: <a class=\"tweet-url username\" href=\"https://twitter.com/bar\">@bar</a>"
 
     - description: "Autolink usernames that are followed by international characters"
       text: "@foo îs in the house"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/foo\">foo</a> îs in the house"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/foo\">@foo</a> îs in the house"
 
     - description: "Preserve case when linking a username"
       text: "@MixedCase"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/MixedCase\">MixedCase</a>"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/MixedCase\">@MixedCase</a>"
 
   lists:
     - description: "Autolink list preceded by a space"
       text: "text @username/list"
-      expected: "text @<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list\">username/list</a>"
+      expected: "text <a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list\">@username/list</a>"
 
     - description: "DO NOT Autolink list when space follows slash"
       text: "text @username/ list"
-      expected: "text @<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>/ list"
+      expected: "text <a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>/ list"
 
     - description: "DO NOT Autolink list with empty username"
       text: "text @/list"
@@ -83,7 +83,7 @@ tests:
 
     - description: "Autolink list at the beginning"
       text: "@username/list"
-      expected: "@<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list\">username/list</a>"
+      expected: "<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list\">@username/list</a>"
 
     - description: "DO NOT Autolink list preceded by letter"
       text: "meet@the/beach"
@@ -91,31 +91,31 @@ tests:
 
     - description: "Autolink list preceded by puctuation"
       text: "great.@username/list"
-      expected: "great.@<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list\">username/list</a>"
+      expected: "great.<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list\">@username/list</a>"
 
     - description: "Autolink list followed by puctuation"
       text: "@username/list&^$%^"
-      expected: "@<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list\">username/list</a>&^$%^"
+      expected: "<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list\">@username/list</a>&^$%^"
 
     - description: "Autolink list name over 25 characters (truncated to 25)"
       text: "@username/list567890123456789012345A"
-      expected: "@<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list567890123456789012345\">username/list567890123456789012345</a>A"
+      expected: "<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list567890123456789012345\">@username/list567890123456789012345</a>A"
 
     - description: "Autolink list that contains an _"
       text: "text @username/list_name"
-      expected: "text @<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list_name\">username/list_name</a>"
+      expected: "text <a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list_name\">@username/list_name</a>"
 
     - description: "Autolink list that contains a -"
       text: "text @username/list-name"
-      expected: "text @<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list-name\">username/list-name</a>"
+      expected: "text <a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list-name\">@username/list-name</a>"
 
     - description: "Autolink list that contains a number"
       text: "text @username/list123"
-      expected: "text @<a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list123\">username/list123</a>"
+      expected: "text <a class=\"tweet-url list-slug\" href=\"https://twitter.com/username/list123\">@username/list123</a>"
 
     - description: "DO NOT Autolink list starting with a number"
       text: "@username/1list"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>/1list"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>/1list"
 
   hashtags:
     - description: "Autolink trailing hashtag"
@@ -744,7 +744,7 @@ tests:
 
     - description: "Autolink @mention if followed by . and TLD"
       text: "@twitter.com @twitter.co.jp"
-      expected: "@<a class=\"tweet-url username\" href=\"https://twitter.com/twitter\">twitter</a>.com @<a class=\"tweet-url username\" href=\"https://twitter.com/twitter\">twitter</a>.co.jp"
+      expected: "<a class=\"tweet-url username\" href=\"https://twitter.com/twitter\">@twitter</a>.com <a class=\"tweet-url username\" href=\"https://twitter.com/twitter\">@twitter</a>.co.jp"
 
     - description: "Autolink a cashtag"
       text: "$STOCK"
@@ -759,7 +759,7 @@ tests:
     - description: "Autolink username"
       text: "text @username"
       json: '{"hashtags":[], "urls":[], "user_mentions":[{"screen_name": "username", "name": "@username", "id": 318686216, "id_str": "318686216", "indices": [5, 14]}]}'
-      expected: "text @<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>"
+      expected: "text <a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>"
 
     - description: "Autolink hashtag"
       text: "text #hashtag"
@@ -774,4 +774,4 @@ tests:
     - description: "Autolink all"
       text: "text http://t.co/gksG6xlq text #hashtag text @username"
       json: '{"hashtags":[{"text":"hashtag", "indices":[31,39]}], "urls":[{"url": "http://t.co/gksG6xlq", "expanded_url": "http://twitter.com/", "display_url": "twitter.com", "indices": [5, 25]}], "user_mentions":[{"screen_name": "username", "name": "@username", "id": 318686216, "id_str": "318686216", "indices": [45, 54]}]}'
-      expected: "text <a href=\"http://t.co/gksG6xlq\" title=\"http://twitter.com/\"><span class='tco-ellipsis'><span style='position:absolute;left:-9999px;'>&nbsp;</span></span><span style='position:absolute;left:-9999px;'>http://</span><span class='js-display-url'>twitter.com</span><span style='position:absolute;left:-9999px;'>/</span><span class='tco-ellipsis'><span style='position:absolute;left:-9999px;'>&nbsp;</span></span></a> text <a href=\"https://twitter.com/#!/search?q=%23hashtag\" title=\"#hashtag\" class=\"tweet-url hashtag\">#hashtag</a> text @<a class=\"tweet-url username\" href=\"https://twitter.com/username\">username</a>"
+      expected: "text <a href=\"http://t.co/gksG6xlq\" title=\"http://twitter.com/\"><span class='tco-ellipsis'><span style='position:absolute;left:-9999px;'>&nbsp;</span></span><span style='position:absolute;left:-9999px;'>http://</span><span class='js-display-url'>twitter.com</span><span style='position:absolute;left:-9999px;'>/</span><span class='tco-ellipsis'><span style='position:absolute;left:-9999px;'>&nbsp;</span></span></a> text <a href=\"https://twitter.com/#!/search?q=%23hashtag\" title=\"#hashtag\" class=\"tweet-url hashtag\">#hashtag</a> text <a class=\"tweet-url username\" href=\"https://twitter.com/username\">@username</a>"
