@@ -781,6 +781,10 @@ tests:
       text: "#أي‌بي‌إم #می‌خواهم"
       expected: ["أي‌بي‌إم", "می‌خواهم"]
 
+    - description: "Extract hashtags that contains '.'"
+      text: "#Test2.0 #Test2. #twitter.com #twitter.co.jp test.#hashtag #.test"
+      expected: ["Test2.0", "Test2", "twitter.com", "twitter.co.jp", "hashtag", ".test"]
+
   hashtags_with_indices:
     - description: "Extract a hastag at the start"
       text: "#hashtag here"
