@@ -380,6 +380,22 @@ tests:
       text: "test http://twitter-dash.com"
       expected: ["http://twitter-dash.com"]
 
+    - description: "Extract URLs with port and userinfo"
+      text: "test http://user:PASSW0RD@example.com:8080/login.php"
+      expected: ["http://user:PASSW0RD@example.com:8080/login.php"]
+
+    - description: "Extract ipv4 URLs"
+      text: "test http://192.168.0.1/index.html?src=asdf"
+      expected: ["http://twitter-dash.com"]
+
+    - description: "Extract ipv6 URLs"
+      text: "test http://[3ffe:1900:4545:3:200:f8ff:fe21:67cf]:80/index.html"
+      expected: ["http://[3ffe:1900:4545:3:200:f8ff:fe21:67cf]:80/index.html"]
+
+    - description: "Extract URLs with sub delims and question marks"
+      text: "test http://example.com?foo=$bar.;baz?BAZ&c=d-#top/?stories+"
+      expected: ["http://example.com?foo=$bar.;baz?BAZ&c=d-#top/?stories+"]
+
     - description: "Extract URLs with lots of symbols then a period"
       text: "http://www.bestbuy.com/site/Currie+Technologies+-+Ezip+400+Scooter/9885188.p?id=1218189013070&skuId=9885188"
       expected: ["http://www.bestbuy.com/site/Currie+Technologies+-+Ezip+400+Scooter/9885188.p?id=1218189013070&skuId=9885188"]
