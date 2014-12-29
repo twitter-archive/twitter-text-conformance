@@ -740,7 +740,7 @@ tests:
 
     - description: "Autolink hashtag if followed by . and TLD"
       text: "#twitter.com #twitter.co.jp"
-      expected: "<a href=\"https://twitter.com/#!/search?q=%23twitter\" title=\"#twitter\" class=\"tweet-url hashtag\">#twitter</a>.com <a href=\"https://twitter.com/#!/search?q=%23twitter\" title=\"#twitter\" class=\"tweet-url hashtag\">#twitter</a>.co.jp"
+      expected: "<a href=\"https://twitter.com/#!/search?q=%23twitter.com\" title=\"#twitter.com\" class=\"tweet-url hashtag\">#twitter.com</a> <a href=\"https://twitter.com/#!/search?q=%23twitter.co.jp\" title=\"#twitter.co.jp\" class=\"tweet-url hashtag\">#twitter.co.jp</a>"
 
     - description: "Autolink @mention if followed by . and TLD"
       text: "@twitter.com @twitter.co.jp"
